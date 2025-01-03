@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>客户列表</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customer_list.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+        <div class="card w-100">
+            <div class="card-header bg-info text-white text-center">
+                <h1 class="h4">客户列表</h1>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-sm">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">公司名称</th>
+                                <th scope="col">状态</th>
+                                <th scope="col">负责员工</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for customer in customers %}
+                                <tr>
+                                    <td>{{ customer.company_name }}</td>
+                                    <td>{{ customer.status }}</td>
+                                    <td>
+                                        {% if customer.employee %}
+                                            {{ customer.employee.user.username }}
+                                        {% else %}
+                                            无
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'customers:customer-detail' customer.pk %}" class="btn btn-outline-primary btn-sm"><i class="fas fa-eye"></i> 查看详情</a>
+                                        <a href="{% url 'customers:customer-update' customer.pk %}" class="btn btn-outline-primary btn-sm"><i class="fas fa-edit"></i> 更新</a>
+                                        <a href="{% url 'customers:customer-delete' customer.pk %}" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i> 删除</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'customers:customer-create' %}" class="btn btn-success"><i class="fas fa-plus-circle"></i> 添加客户</a>
+                <a href="{% url 'accounts:index' %}" class="btn btn-secondary mx-2"><i class="fas fa-home"></i> 返回首页</a>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

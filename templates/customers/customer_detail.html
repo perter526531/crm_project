@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>客户详细信息</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customer_detail.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h1 class="h3">客户详细信息</h1>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="company_name" class="font-weight-bold">公司名称</label>
+                            <p>{{ customer.company_name }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="website" class="font-weight-bold">网站</label>
+                            <p>{{ customer.website }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="legal_person" class="font-weight-bold">法人</label>
+                            <p>{{ customer.legal_person }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="font-weight-bold">状态</label>
+                            <p>{{ customer.status }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="employee" class="font-weight-bold">负责员工</label>
+                            <p>
+                                {% if customer.employee %}
+                                    {{ customer.employee.user.username }}
+                                {% else %}
+                                    无
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="created_at" class="font-weight-bold">创建时间</label>
+                            <p>{{ customer.created_at|date:"Y年m月d日 H:i" }}</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="updated_at" class="font-weight-bold">更新时间</label>
+                            <p>{{ customer.updated_at|date:"Y年m月d日 H:i" }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="h5">联系人信息</h2>
+                        <ul>
+                            {% for contact in contacts %}
+                                <li class="mb-3">
+                                    <div class="form-group">
+                                        <label for="contact_name" class="font-weight-bold">联系人姓名</label>
+                                        <p>{{ contact.name }}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact_phone" class="font-weight-bold">联系电话</label>
+                                        <p>{{ contact.phone_number }}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact_position" class="font-weight-bold">职位</label>
+                                        <p>{{ contact.position }}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact_email" class="font-weight-bold">邮箱</label>
+                                        <p>{{ contact.email }}</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contact_address" class="font-weight-bold">地址</label>
+                                        <p>{{ contact.address }}</p>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="{% url 'customers:customer-list' %}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> 返回客户列表</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

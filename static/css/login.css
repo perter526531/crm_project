@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 10px;
+    margin: auto;
+}
+
+.title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.input-label {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.btn-primary {
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.email-input, .password-input {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+}
+
+.email-input:focus, .password-input:focus {
+    border-color: #80bdff;
+    background-color: #ffffff;
+    outline: 0;
+}

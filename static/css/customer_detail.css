@@ -1,0 +1,19 @@
+body {
+    background-color: #f8f9fa; /* 页面背景色 */
+    font-family: Arial, sans-serif; /* 字体 */
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* 卡片阴影 */
+}
+.card-header {
+    padding: 1rem; /* 调整卡片头部的内边距 */
+}
+.card-body {
+    padding: 2rem; /* 调整卡片主体的内边距 */
+}
+label {
+    color: #495057; /* 标签颜色 */
+}
+p {
+    margin-bottom: 0.5rem; /* 段落的下边距 */
+}

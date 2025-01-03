@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>更新员工信息</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/employee_update.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+        <div class="card w-100">
+            <div class="card-header bg-info text-white text-center">
+                <h1 class="h4">更新员工信息</h1>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.user.id_for_label }}">用户名</label>
+                        {{ form.user }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.position.id_for_label }}">职位</label>
+                        {{ form.position }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.department.id_for_label }}">部门</label>
+                        {{ form.department }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.phone_number.id_for_label }}">电话号码</label>
+                        {{ form.phone_number }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.gender.id_for_label }}">性别</label>
+                        {{ form.gender }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.birthday.id_for_label }}">生日时间</label>
+                        {{ form.birthday }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.hire_date.id_for_label }}">入职时间</label>
+                        {{ form.hire_date }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.employee_number.id_for_label }}">员工编号</label>
+                        {{ form.employee_number }}
+                    </div>
+                    <div class="text-center" >
+                        <button type="submit" class="btn btn-primary">保存</button>
+                         <a href="{% url 'accounts:index' %}" class="btn btn-secondary mx-2"><i class="fas fa-home"></i> 返回首页</a>
+                        <a href="{% url 'organization:employee-list'  %}" class="btn btn-secondary mx-2"><i class="fas fa-home"></i> 返回员工列表</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

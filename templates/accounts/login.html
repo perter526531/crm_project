@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body class="bg-light">
+    <div class="container vh-100 d-flex align-items-center justify-content-center">
+        <div class="card" style="width: 400px; margin-top: 50px;">
+            <div class="card-body p-5">
+                <h1 class="text-center mb-4 title">用户登录</h1>
+                {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.errors.as_text }}
+                </div>
+                {% endif %}
+                <form method="post" class="form-horizontal">
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <label class="input-label" for="email">邮箱:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="请输入邮箱" required autofocus>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="input-label" for="password">密码:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码" required>
+                    </div>
+                    <div class="form-group mb-4">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="rememberMe" name="rememberMe"> 记住我
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">登录</button>
+                    <div class="text-center mt-3">
+                        <a href="#" class="text-muted">忘记密码？</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

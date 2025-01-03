@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>员工列表</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/employee_list.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+        <div class="card w-100">
+            <div class="card-header bg-info text-white text-center">
+                <h1 class="h4">员工列表</h1>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-sm">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">用户名</th>
+                                <th scope="col">员工账号</th>
+                                <th scope="col">职位</th>
+                                <th scope="col">部门</th>
+                                <th scope="col">电话号码</th>
+                                <th scope="col">性别</th>
+                                <th scope="col">生日时间</th>
+                                <th scope="col">入职时间</th>
+                                <th scope="col">员工编号</th>
+                                <th scope="col">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for employee in employees %}
+                                <tr>
+                                    <td>{{ employee.user.username }}</td>
+                                    <td>{{ employee.user.email }}</td>
+                                    <td>{{ employee.position }}</td>
+                                    <td>{{ employee.department.name }}</td>
+                                    <td>{{ employee.phone_number }}</td>
+                                    <td>{{ employee.get_gender_display }}</td>
+                                    <td>{{ employee.birthday|date:"Y-m-d" }}</td>
+                                    <td>{{ employee.hire_date|date:"Y-m-d"}}</td>
+                                    <td>{{ employee.employee_number }}</td>
+                                    <td>
+                                        <!-- 确保此 URL 反转正常 -->
+                                        <a href="{% url 'organization:employee-update' employee.id %}" class="btn btn-outline-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                        <a href="{% url 'organization:employee-delete' employee.id %}" class="btn btn-outline-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center">没有员工信息</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'organization:employee-add' %}" class="btn btn-success"><i class="fas fa-plus-circle"></i> 添加员工</a>
+                <a href="{% url 'accounts:index' %}" class="btn btn-secondary mx-2"><i class="fas fa-home"></i> 返回首页</a>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

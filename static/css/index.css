@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 2.5rem;
+}
+
+.lead {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+}
+
+.nav-link {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.list-item-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
